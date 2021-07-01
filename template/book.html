@@ -1,0 +1,22 @@
+{{template "header" .}}
+<div class="container">
+    <h2>{{.PageName}}</h2>
+    {{if ne .Data nil}}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3 class="card-title">{{.Data.Book.Name}}</h3>
+            <h4 class="card-subtitle mb-2 text-muted">{{.Data.Book.Author}}</h4>
+            <p>{{.Data.Book.Description}}</p>
+
+            <div>{{if (eq .Data.Book.HolderId 0)}}
+                <a class="btn btn-primary btn-sm" href="./getBook?bookId={{.Data.Book.Id}}">Get book</a>
+                {{end}}
+                {{if (eq .Data.Book.HolderId .Data.UserId)}}
+                <a class="btn btn-success btn-sm" href="./submitBook?bookId={{.Data.Book.Id}}">Submit book</a>
+                {{end}}
+            </div>
+        </div>
+    </div>
+    {{end}}
+</div>
+{{template "footer" .}}

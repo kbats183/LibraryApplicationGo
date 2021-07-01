@@ -1,0 +1,27 @@
+{{template "header" .}}
+<div class="container">
+    <h2>{{.PageName}}</h2>
+    <div class="card mb-3">
+        <div class="card-body">
+            <h4 class="card-title">{{.Data.User.Name}}</h4>
+            <a href="./logout" class="card-link">Logout</a>
+        </div>
+    </div>
+
+    <h4>My books ({{len .Data.UserBooks}})</h4>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+        {{range $_, $element := .Data.UserBooks}}
+        <tr>
+            <td>{{$element.Name}}</td>
+            <td>{{$element.Author}}</td>
+            <td><a class="btn btn-success btn-sm" href="./submitBook?bookId={{$element.Id}}">Submit book</a></td>
+        </tr>
+        {{end}}
+    </table>
+</div>
+{{template "footer" .}}

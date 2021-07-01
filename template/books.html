@@ -1,0 +1,23 @@
+{{template "header" .}}
+<div class="container">
+    <h2>{{.PageName}}</h2>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Actions</th>
+        </tr>
+        {{range $_, $element := .Data}}
+        <tr>
+            <td>{{$element.Name}}</td>
+            <td>{{$element.Author}}</td>
+            <td><a class="btn btn-primary btn-sm" href="./book?bookId={{$element.Id}}">Info</a>
+                {{if (eq $element.HolderId 0)}}
+                <a class="btn btn-primary btn-sm" href="./getBook?bookId={{$element.Id}}">Get book</a>
+                {{end}}
+            </td>
+        </tr>
+        {{end}}
+    </table>
+</div>
+{{template "footer" .}}
