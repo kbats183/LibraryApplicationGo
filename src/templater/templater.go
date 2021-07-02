@@ -14,13 +14,10 @@ type PageAlert struct {
 }
 
 type TemplateData struct {
-	BaseUrl   string
 	PageName  string
 	PageAlert PageAlert
 	Data      interface{}
 }
-
-var baseUrl = "localhost/"
 
 func ExecuteTemplate(templateName string, pageName string, writer io.Writer, data interface{}, alert *PageAlert) {
 	tmpl, inCache := templateCache[templateName]
@@ -38,7 +35,7 @@ func ExecuteTemplate(templateName string, pageName string, writer io.Writer, dat
 	if alert != nil {
 		pageAlert = *alert
 	}
-	err := tmpl.Execute(writer, TemplateData{baseUrl, pageName, pageAlert, data})
+	err := tmpl.Execute(writer, TemplateData{pageName, pageAlert, data})
 	if err != nil {
 		fmt.Println("Template executing  error:", err)
 	}
