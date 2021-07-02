@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - '*'
 
 name: Test Across Matrix
 
@@ -33,7 +33,7 @@ jobs:
 
       ## Build go ./...
       - name: Get dependencies
-        run: go get github.com/lib/pq
+        run: go get github.com/kbats183/LibraryApplicationGo/src
 
       ## runs go test ./...
       - name: Test
