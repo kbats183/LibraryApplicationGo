@@ -32,8 +32,8 @@ jobs:
         uses: actions/checkout@v2
 
       ## Build go ./...
-      - name: Test
-        run: go build .
+      - name: Get dependencies
+        run: go get github.com/lib/pq
 
       ## runs go test ./...
       - name: Test
