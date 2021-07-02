@@ -31,6 +31,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Instal dependencies
+        uses: go get -t
+
       ## runs go test ./...
       - name: Test
         run: go test ./...
