@@ -23,7 +23,7 @@ func ExecuteTemplate(templateName string, pageName string, writer io.Writer, dat
 	tmpl, inCache := templateCache[templateName]
 	if !inCache {
 		var err error
-		tmpl, err = template.ParseFiles("./template/"+templateName+".html", "./template/base.html")
+		tmpl, err = template.ParseFiles("./template/" + templateName + ".html")
 		if err != nil {
 			fmt.Println("Template parsing error:", err)
 			return
