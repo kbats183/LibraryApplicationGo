@@ -1,10 +1,10 @@
 package main
 
 import (
-	"./model"
-	"./templater"
 	"crypto/sha1"
 	"encoding/hex"
+	"github.com/kbats183/LibraryApplicationGo/src/model"
+	"github.com/kbats183/LibraryApplicationGo/src/templater"
 	"net/http"
 	"strconv"
 	"time"

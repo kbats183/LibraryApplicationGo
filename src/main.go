@@ -1,9 +1,10 @@
 package main
 
 import (
-	"./model"
 	"fmt"
+	"github.com/kbats183/LibraryApplicationGo/src/model"
 	"net/http"
+	"os"
 )
 
 func main() {
@@ -22,9 +23,15 @@ func main() {
 	http.HandleFunc("/getBook", pageGetBookForUser)
 	http.HandleFunc("/submitBook", pageSubmitBookForUser)
 
-	fmt.Println("Server has been started on port 80")
+	port := "80"
 
-	serverError := http.ListenAndServe(":80", nil)
+	if otherPort, otherPortExists := os.LookupEnv("PORT"); otherPortExists {
+		port = otherPort
+	}
+
+	fmt.Println("Server has been started on port", port)
+
+	serverError := http.ListenAndServe(":"+port, nil)
 	if serverError != nil {
 		fmt.Println("Error:", serverError)
 	}
