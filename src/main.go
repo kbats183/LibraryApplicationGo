@@ -9,8 +9,7 @@ import (
 
 func main() {
 	if err := model.InitDB(); err != nil {
-		fmt.Println(err)
-		return
+		panic(err)
 	}
 
 	http.HandleFunc("/", pageHome)
@@ -33,6 +32,6 @@ func main() {
 
 	serverError := http.ListenAndServe(":"+port, nil)
 	if serverError != nil {
-		fmt.Println("Error:", serverError)
+		panic(serverError)
 	}
 }
