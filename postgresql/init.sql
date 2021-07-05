@@ -1,8 +1,5 @@
-CREATE
-DATABASE library
-    WITH
-    ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1;
+DROP SEQUENCE IF EXISTS user_id_seq;
+DROP TABLE IF EXISTS users;
 
 CREATE SEQUENCE user_id_seq;
 CREATE TABLE users
@@ -14,6 +11,9 @@ CREATE TABLE users
     PRIMARY KEY (id)
 );
 ALTER SEQUENCE user_id_seq OWNED BY users.id;
+
+DROP SEQUENCE IF EXISTS book_id_seq;
+DROP TABLE IF EXISTS books;
 
 CREATE SEQUENCE book_id_seq;
 CREATE TABLE books
