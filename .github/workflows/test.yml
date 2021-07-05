@@ -1,7 +1,5 @@
 on:
   push:
-    branches:
-      - master
 
 name: Test Across Matrix
 
@@ -31,10 +29,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      ## Build go ./...
       - name: Get dependencies
-        run: go get github.com/lib/pq
+        run: go get github.com/kbats183/LibraryApplicationGo/src
 
-      ## runs go test ./...
+      - name: Get tests dependencies
+        run: go get github.com/PuerkitoBio/goquery
+
+      - name: Run service
+        run: docker-compose up -d
+
       - name: Test
         run: go test ./...
+
+      - name: Stop service
+        run: docker-compose down

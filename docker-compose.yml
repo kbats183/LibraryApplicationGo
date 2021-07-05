@@ -1,5 +1,6 @@
 services:
   db:
+    container_name: library_db
     build:
       context: postgresql
       dockerfile: Dockerfile
@@ -10,6 +11,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=55555
   server:
+    container_name: library_server
     build:
       context: .
       dockerfile: Dockerfile
