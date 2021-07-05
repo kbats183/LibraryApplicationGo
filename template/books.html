@@ -1,16 +1,16 @@
 {{template "header" .}}
 <div class="container">
-    <h2>{{.PageName}}</h2>
-    <table class="table">
+    <h2 id="PageName">{{.PageName}}</h2>
+    <table class="table" id="booksList">
         <tr>
             <th>Name</th>
             <th>Author</th>
             <th>Actions</th>
         </tr>
         {{range $_, $element := .Data}}
-        <tr>
-            <td>{{$element.Name}}</td>
-            <td>{{$element.Author}}</td>
+        <tr class="bookLine">
+            <td class="bookLineName">{{$element.Name}}</td>
+            <td class="bookLineAuthor">{{$element.Author}}</td>
             <td><a class="btn btn-primary btn-sm" href="./book?bookId={{$element.Id}}">Info</a>
                 {{if (eq $element.HolderId 0)}}
                 <a class="btn btn-primary btn-sm" href="./getBook?bookId={{$element.Id}}">Get book</a>
