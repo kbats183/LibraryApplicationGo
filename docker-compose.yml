@@ -1,0 +1,27 @@
+services:
+  db:
+    container_name: library_db
+    build:
+      context: postgresql
+      dockerfile: Dockerfile
+    networks:
+      - backend
+    environment:
+      - POSTGRES_DB=library
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=55555
+  server:
+    container_name: library_server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - backend
+    depends_on:
+      - db
+networks:
+  backend:
+    driver: "bridge"

@@ -31,6 +31,7 @@ func InitDB() error {
 	}
 
 	connStr = string(dbConfig)
+	fmt.Println(connStr)
 
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {

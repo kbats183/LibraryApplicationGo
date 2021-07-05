@@ -1,7 +1,7 @@
 {{template "header" .}}
 <div class="container">
-    <h2>{{.PageName}}</h2>
-    <div class="card mb-3">
+    <h2 id="PageName">{{.PageName}}</h2>
+    <div class="card mb-3" id="booksList">
         <div class="card-body">
             <h4 class="card-title">{{.Data.User.Name}}</h4>
             <a href="./logout" class="card-link">Logout</a>

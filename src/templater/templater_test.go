@@ -63,7 +63,6 @@ func TestExecuteTemplate(t *testing.T) {
 
 	ExecuteTemplate("__test_template__", "TestPage", buffer, "Hello world!", nil)
 
-	t.Log(buffer.String())
 	if buffer.String() != "TestPage: Hello world!\nIt's text form base.html" {
 		t.Fail()
 	}
